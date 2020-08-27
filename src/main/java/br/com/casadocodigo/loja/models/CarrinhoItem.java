@@ -1,11 +1,14 @@
 package br.com.casadocodigo.loja.models;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping
-public class CarrinhoItem {
+public class CarrinhoItem implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	private Produto produto;
 
