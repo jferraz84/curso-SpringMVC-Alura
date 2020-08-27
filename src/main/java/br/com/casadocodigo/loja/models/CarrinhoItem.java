@@ -1,5 +1,7 @@
 package br.com.casadocodigo.loja.models;
 
+import java.math.BigDecimal;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping
@@ -13,6 +15,10 @@ public class CarrinhoItem {
 		this.produto = produto;
 		this.tipoPreco = tipoPreco;
 
+	}
+	
+	public BigDecimal getPreco() {
+		return produto.precoPara(tipoPreco);
 	}
 
 	public Produto getProduto() {
@@ -54,6 +60,10 @@ public class CarrinhoItem {
 		} else if (!produto.equals(other.produto))
 			return false;
 		return true;
+	}
+
+	public BigDecimal getTotal(int quantidade) {
+		return this.getPreco().multiply(new BigDecimal(quantidade));
 	}
 	
 	
